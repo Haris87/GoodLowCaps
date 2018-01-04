@@ -9,10 +9,10 @@ function getCoins(options, successCallback, errorCallback){
 	console.log("Retrieving coin list from coinmarketcap...");
 	request.get(url, { json:true }, function(err, res, body){
 		if(err) {
-			console.log("Error getting coin list from coinmarketcap:", err);
 			errorCallback(err);
 		} else {
 			console.log("Coin list retrieved from coinmarketcap.");
+			console.log("Retrieved "+body.length+" coins.");
 			successCallback(body);
 		}
 	});
