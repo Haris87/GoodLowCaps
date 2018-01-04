@@ -56,42 +56,42 @@ function readUserInput(){
 
 		if(input.indexOf('--max-cap') !== -1){
 			
-			params.highestMarketCap = input[input.indexOf('--max-cap')+1] || params.highestMarketCap;
+			params.highestMarketCap = Number(input[input.indexOf('--max-cap')+1] || params.highestMarketCap);
 			if(!isNumber(params.highestMarketCap)){
 				throw "--max-cap value given is not a number.";
 			}
 		}
 		
 		if(input.indexOf('--min-cap') !== -1){
-			params.lowestMarketCap = input[input.indexOf('--min-cap')+1] || params.lowestMarketCap;
+			params.lowestMarketCap = Number(input[input.indexOf('--min-cap')+1] || params.lowestMarketCap);
 			if(!isNumber(params.lowestMarketCap)){
 				throw "--min-cap value given is not a number.";
 			}
 		}
 		
 		if(input.indexOf('--max-supply') !== -1){
-			params.maxTotalSupply = input[input.indexOf('--max-supply')+1] || params.maxTotalSupply;
+			params.maxTotalSupply = Number(input[input.indexOf('--max-supply')+1] || params.maxTotalSupply);
 			if(!isNumber(params.maxTotalSupply)){
 				throw "--max-supply value given is not a number.";
 			}
 		}
 		
 		if(input.indexOf('--supply-ratio') !== -1){
-			params.minTotalAvailableSupplyRatio = input[input.indexOf('--supply-ratio')+1] || params.minTotalAvailableSupplyRatio;
+			params.minTotalAvailableSupplyRatio = Number(input[input.indexOf('--supply-ratio')+1] || params.minTotalAvailableSupplyRatio);
 			if(!isNumber(params.minTotalAvailableSupplyRatio)){
 				throw "--supply-ratio value given is not a number.";
 			}
 		}
 		
 		if(input.indexOf('--volume-cap-ratio') !== -1){
-			params.minVolume24hMarketCapRatio = input[input.indexOf('--volume-cap-ratio')+1] || params.minVolume24hMarketCapRatio;
+			params.minVolume24hMarketCapRatio = Number(input[input.indexOf('--volume-cap-ratio')+1] || params.minVolume24hMarketCapRatio);
 			if(!isNumber(params.minVolume24hMarketCapRatio)){
 				throw "--volume-cap-ratio value given is not a number.";
 			}
 		}
 		
 		if(input.indexOf('--max-price') !== -1){
-			params.maxPrice = input[input.indexOf('--max-price')+1] || params.maxPrice;
+			params.maxPrice = Number(input[input.indexOf('--max-price')+1] || params.maxPrice);
 			if(!isNumber(params.maxPrice)){
 				throw "--max-price value given is not a number.";
 			}
