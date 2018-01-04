@@ -16,4 +16,4 @@ function getCoins(options, successCallback, errorCallback){
 	
 }
 
-module.exports = getCoins;
+module.exports = {getCoins: getCoins};
