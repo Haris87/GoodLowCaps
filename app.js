@@ -5,11 +5,12 @@ var exec = require('child_process').exec;
 
 // Change these parameters to suite your search
 var params = {
-	highestMarketCap: 250000, 			// coins that have up to that much market cap ($), default: 250,000
-	lowestMarketCap: 50000, 			// coins that have at least that much market cap ($), default: 50,000
+	highestMarketCap: 250000, 			// coins that have up to this much market cap ($), default: 250,000
+	lowestMarketCap: 50000, 			// coins that have at least this much market cap ($), default: 50,000
 	maxTotalSupply: 50000000, 			// total supply of coins should not be more than this number, default: 50,000,000
 	minTotalAvailableSupplyRatio: 0.8, 	// ratio of available coins compared to total supply of coins, default: 0.8
-	minVolume24hMarketCapRatio: 0.02 	// 24h volume as percentage of market cap should be at least this much, default: 0.02
+	minVolume24hMarketCapRatio: 0.02, 	// 24h volume as percentage of market cap should be at least this much, default: 0.02
+	maxPrice: 0.1						// coins that are priced less than this number ($), default: 0.1
 }
 
 function run(){
@@ -29,6 +30,7 @@ function logParams(){
 	console.log("Total supply below: \n>", params.maxTotalSupply);
 	console.log("Total supply to available supply ratio above: \n>", params.minTotalAvailableSupplyRatio);
 	console.log("24h volume to market cap ration above: \n>", params.minVolume24hMarketCapRatio);
+	console.log("Coin price below: \n>", params.maxPrice);
 };
 
 function isGoodCoin(coin){
@@ -46,12 +48,14 @@ function coinMeetsConditions(coin, params){
 	var totalSupply = coin.total_supply < params.maxTotalSupply;
 	var _24hMarketCapRatio = coin['24h_volume_usd']/coin.market_cap_usd > params.minVolume24hMarketCapRatio;
 	var totalAvailableSupplyRatio = coin.available_supply/coin.total_supply > params.minTotalAvailableSupplyRatio; 
+	var maxPrice = coin.price_usd < params.maxPrice;
 	
 	return maxMarketCap && 
 		minMarketCap && 
 		totalSupply && 
 		_24hMarketCapRatio && 
-		totalAvailableSupplyRatio;
+		totalAvailableSupplyRatio &&
+		maxPrice;
 };
 
 function saveToFile(coins) {
