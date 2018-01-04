@@ -1,0 +1,16 @@
+{
+  "name": "lowcapcoins",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lowcapcoins.js",
+  "scripts": {
+    "start": "lowcapcoins.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parse": "^2.0.0",
+    "request": "^2.83.0"
+  }
+}
