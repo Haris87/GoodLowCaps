@@ -1,14 +1,14 @@
 var coinmarketcap = require('./coinmarketcap');
 var fs = require('fs');
 
-coinmarketcap.getCoins({start: 300, limit: 500}, function(coins){
+coinmarketcap.getCoins({start: 0, limit: 1000}, function(coins){
 	var goodCoins = coins.filter(isGoodCoin);
 	saveToFile(goodCoins);
 });
 
 function isGoodCoin(coin){
-	var marketCapLessThan250k = coin.market_cap_usd < 250000 || true;
-	var marketCapMoreThan50k = coin.market_cap_usd > 50000 || true;
+	var marketCapLessThan250k = coin.market_cap_usd < 250000;
+	var marketCapMoreThan50k = coin.market_cap_usd > 50000;
 	var supplyLessThan50m = coin.total_supply < 50000000;
 	var moreThan2percent24hVolumeToCap = coin['24h_volume_usd']/coin.market_cap_usd > 0.02;
 	var totalSupplyCloseToAvailableSupply = coin.available_supply/coin.total_supply > 0.8; 
